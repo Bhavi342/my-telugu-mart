@@ -13,74 +13,52 @@ function App() {
     localStorage.setItem('myShopCart', JSON.stringify(cart));
   }, [cart]);
 
-  // Items based on your list + added some more to reach 50
+  // Specific Names linked with Keywords for matching images
   const products = [
-    // Home & Kitchen
-    { id: 1, name: "Ceramic Tea Cup", price: 250, category: "Home", keyword: "teacup" },
-    { id: 2, name: "Dinner Plates Set", price: 1200, category: "Home", keyword: "plates" },
-    { id: 3, name: "Automatic Dish Washer", price: 35000, category: "Home", keyword: "dishwasher" },
-    { id: 4, name: "Coffee Mug", price: 150, category: "Home", keyword: "mug" },
-    { id: 5, name: "Plastic Bucket", price: 300, category: "Home", keyword: "bucket" },
-    { id: 6, name: "Non-stick Cookware", price: 2500, category: "Home", keyword: "cookware" },
-    { id: 7, name: "Electric Kettle", price: 1800, category: "Home", keyword: "kettle" },
-    { id: 8, name: "Curtains Set", price: 1200, category: "Home", keyword: "curtains" },
+    // Electronics
+    { id: 1, name: "Apple iPhone 15", price: 79900, category: "Electronics", keyword: "iphone" },
+    { id: 2, name: "MacBook Air Laptop", price: 114900, category: "Electronics", keyword: "laptop" },
+    { id: 3, name: "Sony Wireless Headphones", price: 15000, category: "Electronics", keyword: "headphones" },
+    { id: 4, name: "Samsung Galaxy Watch", price: 22000, category: "Electronics", keyword: "smartwatch" },
+    { id: 5, name: "Canon Professional Camera", price: 55000, category: "Electronics", keyword: "camera" },
+    { id: 6, name: "iPad Pro Tablet", price: 85000, category: "Electronics", keyword: "tablet" },
+    { id: 7, name: "Gaming Console", price: 45000, category: "Electronics", keyword: "ps5" },
+    { id: 8, name: "Bluetooth Speaker", price: 5000, category: "Electronics", keyword: "speaker" },
 
     // Fashion
-    { id: 9, name: "Cotton T-shirt", price: 599, category: "Fashion", keyword: "tshirt" },
-    { id: 10, name: "Formal Shirt", price: 1200, category: "Fashion", keyword: "shirt" },
-    { id: 11, name: "Sports Shoes", price: 2500, category: "Fashion", keyword: "shoes" },
-    { id: 12, name: "Denim Pants", price: 1800, category: "Fashion", keyword: "jeans" },
-    { id: 13, name: "Designer Lehenga", price: 8500, category: "Fashion", keyword: "lehenga" },
-    { id: 14, name: "Gold Jewellery Set", price: 45000, category: "Fashion", keyword: "jewellery" },
-    { id: 15, name: "Silk Saree", price: 5000, category: "Fashion", keyword: "saree" },
-    { id: 16, name: "Winter Jacket", price: 3200, category: "Fashion", keyword: "jacket" },
-    { id: 17, name: "Leather Belt", price: 800, category: "Fashion", keyword: "belt" },
-    { id: 18, name: "Sunglasses", price: 1500, category: "Fashion", keyword: "sunglasses" },
+    { id: 9, name: "Nike Sports Shoes", price: 8500, category: "Fashion", keyword: "shoes" },
+    { id: 10, name: "Levi's Denim Jeans", price: 3200, category: "Fashion", keyword: "jeans" },
+    { id: 11, name: "Casual Cotton T-Shirt", price: 999, category: "Fashion", keyword: "tshirt" },
+    { id: 12, name: "Warm Winter Jacket", price: 4500, category: "Fashion", keyword: "jacket" },
+    { id: 13, name: "Ray-Ban Sunglasses", price: 12000, category: "Fashion", keyword: "sunglasses" },
+    { id: 14, name: "Leather Handbag", price: 3500, category: "Fashion", keyword: "handbag" },
+    { id: 15, name: "Wrist Watch", price: 6000, category: "Fashion", keyword: "watch" },
 
-    // Electronics
-    { id: 19, name: "Wireless Earphones", price: 1999, category: "Electronics", keyword: "earbuds" },
-    { id: 20, name: "Music System Set", price: 12000, category: "Electronics", keyword: "speakers" },
-    { id: 21, name: "Smart Phone", price: 25000, category: "Electronics", keyword: "smartphone" },
-    { id: 22, name: "Bluetooth Headset", price: 3500, category: "Electronics", keyword: "headset" },
-    { id: 23, name: "Power Bank", price: 1500, category: "Electronics", keyword: "powerbank" },
-    { id: 24, name: "Smart Watch", price: 4500, category: "Electronics", keyword: "smartwatch" },
-    { id: 25, name: "Laptop", price: 65000, category: "Electronics", keyword: "laptop" },
-    { id: 26, name: "Digital Camera", price: 42000, category: "Electronics", keyword: "camera" },
+    // Sports
+    { id: 16, name: "Cricket Bat", price: 4500, category: "Sports", keyword: "cricket,bat" },
+    { id: 17, name: "Premium Football", price: 1200, category: "Sports", keyword: "soccerball" },
+    { id: 18, name: "Badminton Racket", price: 2500, category: "Sports", keyword: "badminton" },
+    { id: 19, name: "Adjustable Dumbbells", price: 3000, category: "Sports", keyword: "dumbbells" },
+    { id: 20, name: "Professional Yoga Mat", price: 800, category: "Sports", keyword: "yogamat" },
+    { id: 21, name: "Basketball", price: 1500, category: "Sports", keyword: "basketball" },
 
-    // Stationaries & Books
-    { id: 27, name: "Parker Pen", price: 500, category: "Books", keyword: "pen" },
-    { id: 28, name: "Note Books Set", price: 400, category: "Books", keyword: "notebook" },
-    { id: 29, name: "Novel: The Alchemist", price: 350, category: "Books", keyword: "book" },
-    { id: 30, name: "Geometry Box", price: 250, category: "Books", keyword: "geometrybox" },
-    { id: 31, name: "Color Pencils", price: 150, category: "Books", keyword: "pencils" },
+    // Home & Kitchen
+    { id: 22, name: "Modern Coffee Table", price: 5000, category: "Home", keyword: "table" },
+    { id: 23, name: "Comfortable Sofa", price: 25000, category: "Home", keyword: "sofa" },
+    { id: 24, name: "LED Desk Lamp", price: 1200, category: "Home", keyword: "lamp" },
+    { id: 25, name: "Wall Hanging Clock", price: 700, category: "Home", keyword: "clock" },
+    { id: 26, name: "Dining Chair", price: 3500, category: "Home", keyword: "chair" },
+    { id: 27, name: "Non-Stick Frying Pan", price: 1500, category: "Home", keyword: "pan" },
 
-    // Groceries (Added to make it 50)
-    { id: 32, name: "Basmati Rice 5kg", price: 650, category: "Groceries", keyword: "rice" },
-    { id: 33, name: "Cooking Oil 1L", price: 180, category: "Groceries", keyword: "oil" },
-    { id: 34, name: "Biscuits Pack", price: 50, category: "Groceries", keyword: "biscuits" },
-    { id: 35, name: "Organic Honey", price: 250, category: "Groceries", keyword: "honey" },
-    { id: 36, name: "Tea Powder", price: 300, category: "Groceries", keyword: "teapowder" },
-    { id: 37, name: "Fruit Jam", price: 120, category: "Groceries", keyword: "jam" },
-
-    // Sports (Added to make it 50)
-    { id: 38, name: "Cricket Bat", price: 3500, category: "Sports", keyword: "cricket" },
-    { id: 39, name: "Football", price: 999, category: "Sports", keyword: "football" },
-    { id: 40, name: "Yoga Mat", price: 750, category: "Sports", keyword: "yogamat" },
-    { id: 41, name: "Badminton Racket", price: 1500, category: "Sports", keyword: "badminton" },
-    { id: 42, name: "Gym Dumbbells", price: 2000, category: "Sports", keyword: "dumbbells" },
-    { id: 43, name: "Tennis Ball Pack", price: 300, category: "Sports", keyword: "tennisball" },
-
-    // More Furniture/Home
-    { id: 44, name: "Wall Clock", price: 600, category: "Home", keyword: "wallclock" },
-    { id: 45, name: "Table Lamp", price: 1100, category: "Home", keyword: "lamp" },
-    { id: 46, name: "Bed Sheet", price: 900, category: "Home", keyword: "bedsheet" },
-    { id: 47, name: "Sofa Cushion", price: 400, category: "Home", keyword: "cushion" },
-    { id: 48, name: "Flower Vase", price: 800, category: "Home", keyword: "vase" },
-    { id: 49, name: "Towel Set", price: 500, category: "Home", keyword: "towel" },
-    { id: 50, name: "Door Mat", price: 200, category: "Home", keyword: "doormat" }
+    // Books
+    { id: 28, name: "Atomic Habits - James Clear", price: 450, category: "Books", keyword: "book,habits" },
+    { id: 29, name: "The Alchemist - Paulo Coelho", price: 300, category: "Books", keyword: "book,alchemist" },
+    { id: 30, name: "Harry Potter Collection", price: 1500, category: "Books", keyword: "harrypotter" }
+    
+    // You can continue to add more objects here...
   ];
 
-  const categories = ["All", "Home", "Fashion", "Electronics", "Books", "Groceries", "Sports"];
+  const categories = ["All", "Electronics", "Fashion", "Sports", "Home", "Books"];
 
   const filteredProducts = products.filter(p => {
     return (category === "All" || p.category === category) &&
@@ -124,12 +102,13 @@ function App() {
         <div style={{ flex: 3, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '20px' }}>
           {filteredProducts.map(p => (
             <div key={p.id} style={{ backgroundColor: 'white', padding: '10px', borderRadius: '8px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)', textAlign: 'center' }}>
+              {/* Dynamic Image fetching based on keyword */}
               <img 
                 src={`https://loremflickr.com/320/240/${p.keyword}?lock=${p.id}`} 
                 alt={p.name} 
                 style={{ width: '100%', height: '130px', objectFit: 'cover', borderRadius: '5px' }} 
               />
-              <h4 style={{ margin: '10px 0', fontSize: '0.85rem', height: '35px', overflow: 'hidden' }}>{p.name}</h4>
+              <h4 style={{ margin: '10px 0', fontSize: '0.85rem', height: '35px' }}>{p.name}</h4>
               <p style={{ color: '#B12704', fontWeight: 'bold' }}>₹{p.price}</p>
               <button onClick={() => addToCart(p)} style={{ cursor: 'pointer', backgroundColor: '#ffd814', border: 'none', padding: '8px', width: '100%', borderRadius: '20px', fontWeight: 'bold' }}>Add to Cart</button>
             </div>
